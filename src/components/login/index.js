@@ -20,13 +20,12 @@ class Login extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    console.log(data)
     if (response.ok === true) {
       const jwtToken = data.jwt_token
-      Cookies.set('jwtToken', jwtToken, {expires: 30})
+      Cookies.set('jwt_token', jwtToken, {expires: 30})
       const {history} = this.props
-      this.setState({username: '', password: ''})
       history.replace('/')
+      this.setState({username: '', password: ''})
     } else {
       this.setState({error: true, errorMsg: data.error_msg})
     }
@@ -42,6 +41,10 @@ class Login extends Component {
 
   render() {
     const {username, password, error, errorMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="loginPage">
         <div className="loginContainer">

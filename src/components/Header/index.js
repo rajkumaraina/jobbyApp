@@ -6,8 +6,10 @@ import './index.css'
 
 const Header = props => {
   const logoutButton = () => {
-    Cookies.remove('jwtToken')
     const {history} = props
+    Cookies.remove('jwt_token')
+    const token = Cookies.get('jwt_token')
+    console.log(token)
     history.replace('/login')
   }
   return (

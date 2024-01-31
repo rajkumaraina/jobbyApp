@@ -2,18 +2,20 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #2c364c;
+  background-color: #272727;
+  padding: 8px;
 }
 .websiteLogoHome {
   width: 105px;
-  height: 55px;
+  height: 35px;
 }
 .unordered {
   padding: 0;
+  margin: 8px;
+  width: 90%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 .listItem {
   list-style-type: none;
@@ -32,7 +34,7 @@
 }
 .logoutButton {
   background-color: #6366f1;
-  padding: 8px;
+  padding: 4px;
   width: 85px;
   border: 0 none;
   outline: none;

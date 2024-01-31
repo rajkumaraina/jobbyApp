@@ -1,0 +1,8 @@
+.employmentListItem {
+  list-style-type: none;
+  margin: 12px;
+}
+.employmentLabelElement {
+  color: #cbd5e1;
+  margin: 8px;
+}

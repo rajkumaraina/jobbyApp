@@ -1,0 +1,13 @@
+.notFound {
+  width: 350px;
+  height: 350px;
+  margin: 8px;
+}
+.NotFoundContainer {
+  background-color: #000000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
