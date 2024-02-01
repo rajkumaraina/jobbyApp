@@ -1,5 +1,11 @@
 import {Link, withRouter} from 'react-router-dom'
 
+import {TiHome} from 'react-icons/ti'
+
+import {FaBriefcase} from 'react-icons/fa'
+
+import {FiLogOut} from 'react-icons/fi'
+
 import Cookies from 'js-cookie'
 
 import './index.css'
@@ -24,19 +30,40 @@ const Header = props => {
             />
           </li>
         </Link>
-        <div className="navItems">
+        <div className="navItems bigScreen">
           <Link to="/" className="LinkElement">
-            <li className="listItem item">Home</li>
+            <li className="listItem item ">Home</li>
           </Link>
           <Link to="/jobs" className="LinkElement">
-            <li className="listItem item">Jobs</li>
+            <li className="listItem item ">Jobs</li>
           </Link>
         </div>
-        <li className="listItem">
-          <button className="logoutButton" type="button" onClick={logoutButton}>
+        <li className="listItem bigScreen">
+          <button
+            className="logoutButton "
+            type="button"
+            onClick={logoutButton}
+          >
             Logout
           </button>
         </li>
+        <div className="navItems smallScreen">
+          <Link to="/" className="LinkElement">
+            <li className="listItem item ">
+              <TiHome className="headerIcons" />
+            </li>
+          </Link>
+          <Link to="/jobs" className="LinkElement">
+            <li className="listItem item ">
+              <FaBriefcase className="headerIcons" />
+            </li>
+          </Link>
+          <Link to="/jobs" className="LinkElement">
+            <li className="listItem item ">
+              <FiLogOut className="headerIcons" />
+            </li>
+          </Link>
+        </div>
       </ul>
     </nav>
   )

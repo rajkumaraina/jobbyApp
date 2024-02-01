@@ -7,11 +7,6 @@ import Header from '../Header'
 import './index.css'
 
 const Home = props => {
-  const jwtToken = Cookies.get('jwt_token')
-  console.log(jwtToken)
-  if (jwtToken === undefined) {
-    return <Redirect to="/login" />
-  }
   const jobsButton = () => {
     const {history} = props
     history.replace('/jobs')

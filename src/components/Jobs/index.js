@@ -183,11 +183,11 @@ class Jobs extends Component {
   }
 
   retryProfileButton = () => {
-    this.getProfile()
+    this.setState({view: Views.loading}, this.getProfile)
   }
 
   retryJobButton = () => {
-    this.getJobs()
+    this.setState({view: Views.loading}, this.getJobs)
   }
 
   renderProfileFailureView = () => (
@@ -295,6 +295,23 @@ class Jobs extends Component {
         <Header />
         <div className="jobContainer">
           <div className="jobFirstContainer">
+            <div className="searchContainer smallScreen">
+              <input
+                type="search"
+                placeholder="Search"
+                value={searchInput}
+                className="searchInput"
+                onChange={this.InputChange}
+              />
+              <button
+                type="button"
+                data-testid="searchButton"
+                className="searchButton"
+                onClick={this.Searching}
+              >
+                .<BsSearch className="search-icon" />
+              </button>
+            </div>
             {this.profile()}
             <hr className="horizontalProfileLine" />
             <h1 className="type">Type of Employment</h1>
@@ -320,7 +337,7 @@ class Jobs extends Component {
             </ul>
           </div>
           <div className="jobSecondContainer">
-            <div className="searchContainer">
+            <div className="searchContainer bigScreen">
               <input
                 type="search"
                 placeholder="Search"

@@ -134,3 +134,51 @@
   color: #ffffff;
   font-size: 20px;
 }
+.smallScreen {
+  display: none;
+}
+.bigScreen {
+  display: flex;
+}
+@media (max-width: 576px) {
+  .jobContainer {
+    flex-direction: column;
+  }
+  .jobFirstContainer {
+    width: 100%;
+  }
+  .jobSecondContainer {
+    width: 100%;
+  }
+  .bigScreen {
+    display: none;
+  }
+  .smallScreen {
+    display: flex;
+  }
+  .searchContainer {
+    width: 80%;
+  }
+  .jobFailure {
+    width: 250px;
+    height: 200px;
+  }
+  .noJobView {
+    width: 250px;
+    height: 200px;
+    margin-top: 0;
+  }
+  .noJobContainer {
+    height: 350px;
+  }
+  .noJobHeading {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 35px;
+    margin: 0;
+    margin-top: 8px;
+  }
+  .failureHeading {
+    font-size: 35px;
+  }
+}

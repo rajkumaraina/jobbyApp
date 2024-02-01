@@ -43,3 +43,35 @@
   border-radius: 5px;
   color: #ffffff;
 }
+.bigScreen {
+  display: flex;
+}
+.smallScreen {
+  display: none;
+}
+.headerIcons {
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+}
+.headerButtons {
+  border: 0 none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+@media (max-width: 576px) {
+  .websiteLogoHome {
+    width: 105px;
+    height: 35px;
+  }
+  .bigScreen {
+    display: none;
+  }
+  .unordered {
+    width: 100%;
+  }
+  .smallScreen {
+    display: flex;
+  }
+}

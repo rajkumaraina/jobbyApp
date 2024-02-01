@@ -144,7 +144,7 @@ class JobItem extends Component {
   }
 
   retryJobButton = () => {
-    this.getJobDetail()
+    this.setState({view: Views.loading}, this.getJobDetail)
   }
 
   renderJobItemSuccessView = () => {
@@ -218,7 +218,7 @@ class JobItem extends Component {
             </ul>
             <h1 className="description jobItemdescription">Life at Company</h1>
             <div className="lifeatcompany">
-              <p className="jobDescription lifeDescription">
+              <p className="jobItemDetailDescription lifeDescription">
                 {lifeAtCompany.description}
               </p>
               <img
@@ -229,7 +229,9 @@ class JobItem extends Component {
             </div>
           </div>
           <div className="similarJobsContainer">
-            <h1 className="description jobItemdescription">Similar Jobs</h1>
+            <h1 className="description jobItemdescription similar">
+              Similar Jobs
+            </h1>
             <ul className="similarJobsUnordered">
               {similarJobs.map(each => (
                 <SimilarJobs item={each} key={each.id} />
@@ -242,7 +244,7 @@ class JobItem extends Component {
   }
 
   renderJobItemFailureView = () => (
-    <>
+    <div className="JobItemContainer failure">
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
@@ -259,7 +261,7 @@ class JobItem extends Component {
       >
         Retry
       </button>
-    </>
+    </div>
   )
 
   renderLoadingView = () => (
