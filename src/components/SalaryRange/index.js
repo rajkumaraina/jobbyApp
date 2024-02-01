@@ -7,9 +7,14 @@ const SalaryRange = props => {
     changeSalary(salaryRangeId)
   }
   return (
-    <li className="employmentListItem" onClick={itemClicked}>
-      <input type="radio" id="type" name="salary" />
-      <label htmlFor="type" className="employmentLabelElement">
+    <li className="employmentListItem">
+      <input
+        type="radio"
+        id={salaryRangeId}
+        name="salary"
+        onClick={itemClicked}
+      />
+      <label htmlFor={salaryRangeId} className="employmentLabelElement">
         {label}
       </label>
     </li>

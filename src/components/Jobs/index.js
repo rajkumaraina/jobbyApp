@@ -70,6 +70,7 @@ class Jobs extends Component {
     view: Views.loading,
     jobView: Views.loading,
     JobsList: [],
+    finalSearch: '',
   }
 
   componentDidMount = () => {
@@ -102,17 +103,16 @@ class Jobs extends Component {
   }
 
   getJobs = async () => {
-    const {typeOfEmployment, salaryRange, searchInput} = this.state
+    const {typeOfEmployment, salaryRange, finalSearch} = this.state
     const Employment = typeOfEmployment.join()
     const jwtToken = Cookies.get('jwt_token')
-    console.log(jwtToken)
     const options = {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
     }
-    const url = `https://apis.ccbp.in/jobs?employment_type=${Employment}&minimum_package=${salaryRange}&search=${searchInput}`
+    const url = `https://apis.ccbp.in/jobs?employment_type=${Employment}&minimum_package=${salaryRange}&search=${finalSearch}`
     console.log(url)
     const response = await fetch(url, options)
     if (response.ok === true) {
@@ -127,7 +127,7 @@ class Jobs extends Component {
         rating: each.rating,
         title: each.title,
       }))
-      console.log(updatedData)
+
       this.setState({JobsList: updatedData, jobView: Views.success})
     } else {
       this.setState({jobView: Views.failure})
@@ -135,12 +135,26 @@ class Jobs extends Component {
   }
 
   ChangeEmployment = item => {
-    this.setState(
-      prevState => ({
-        typeOfEmployment: [...prevState.typeOfEmployment, item],
-      }),
-      this.getJobs,
-    )
+    const {typeOfEmployment} = this.state
+    console.log(typeOfEmployment)
+    if (typeOfEmployment.includes(item) === false) {
+      this.setState(
+        prevState => ({
+          typeOfEmployment: [...prevState.typeOfEmployment, item],
+        }),
+        this.getJobs,
+      )
+    } else {
+      this.setState(
+        prevState => ({
+          typeOfEmployment: prevState.typeOfEmployment.filter(
+            each => each !== item,
+          ),
+        }),
+        this.getJobs,
+      )
+    }
+    console.log(this.state)
   }
 
   changeSalary = item => {
@@ -152,7 +166,8 @@ class Jobs extends Component {
   }
 
   Searching = () => {
-    this.getJobs()
+    const {searchInput} = this.state
+    this.setState({finalSearch: searchInput}, this.getJobs)
   }
 
   renderProfileSuccessView = () => {
@@ -206,10 +221,10 @@ class Jobs extends Component {
   }
 
   renderSuccessJobView = () => {
-    const {JobsList, searchInput} = this.state
+    const {JobsList, finalSearch} = this.state
     const filteredList = JobsList.filter(each => {
       const EachItem = each.title.toLowerCase()
-      return EachItem.includes(searchInput.toLowerCase())
+      return EachItem.includes(finalSearch.toLowerCase())
     })
     let JOB
     if (filteredList.length === 0) {
@@ -317,7 +332,7 @@ class Jobs extends Component {
                 type="button"
                 data-testid="searchButton"
                 className="searchButton"
-                onClick={this.Search}
+                onClick={this.Searching}
               >
                 .<BsSearch className="search-icon" />
               </button>
