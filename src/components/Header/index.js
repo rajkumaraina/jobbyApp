@@ -58,11 +58,10 @@ const Header = props => {
               <FaBriefcase className="headerIcons" />
             </li>
           </Link>
-          <Link to="/jobs" className="LinkElement">
-            <li className="listItem item ">
-              <FiLogOut className="headerIcons" />
-            </li>
-          </Link>
+
+          <li className="listItem item ">
+            <FiLogOut className="headerIcons" onClick={logoutButton} />
+          </li>
         </div>
       </ul>
     </nav>

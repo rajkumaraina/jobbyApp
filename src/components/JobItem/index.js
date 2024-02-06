@@ -1,4 +1,4 @@
-import {Component, Redirect} from 'react'
+import {Component} from 'react'
 
 import {FaStar, FaBriefcase} from 'react-icons/fa'
 
@@ -27,7 +27,6 @@ const SimilarJobs = props => {
     companyLogoUrl,
     employmentType,
     jobDescription,
-    id,
     location,
     rating,
     title,
@@ -151,10 +150,8 @@ class JobItem extends Component {
     const {jobDetails, skills, similarJobs, lifeAtCompany} = this.state
     console.log(skills)
     const {
-      companyWebsiteUrl,
       companyLogoUrl,
       employmentType,
-      id,
       jobDescription,
       location,
       packagePerAnnum,
